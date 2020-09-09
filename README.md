@@ -11,6 +11,8 @@ Dev requirement:
 ```
 tensorflow-gpu-1.13.1
 cvxopt-1.2.5
+numpy-1.15.0
+pandas-0.25.2
 ```
 
 #### Toydata:
@@ -23,18 +25,19 @@ python MER_for_toydata.py
 
 
 ```
-python 10-nonlinearized-dual.py 4 2 100
+python 10-nonlinearized-dual.py --num_of_group 4 --num_minor 2 --train_subgroup_batch 100
 ``` 
-Here, args[1] = total subgroup number $N$;    
-args[2] = number of minor-class subgroup $c$;     
-args[3] = number of data in each subgroup $s_j$ ;   
+Here,  
+--num_of_group : total subgroup number $N$ ;    
+--num_minor    : number of minor-class subgroup $c$ ;      
+--train_subgroup_batch : number of data in each subgroup $s_j$ ;   
 
 
 
 2, ResNet+MER:
 
 ```
-python nonlinearized-dual-ResNet.py 4 2 100
+python nonlinearized-dual-ResNet.py --num_of_group 4 --num_minor 2 --train_subgroup_batch 100
 ```
 
 The label now is "eyeglasses" in CelebA dataset, which can be changed in data_process.py. 
