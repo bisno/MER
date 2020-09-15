@@ -34,7 +34,8 @@ for i in range(500):
     u2[i+1000],v2[i+1000] = 0.04+rand_x[i+1000],1.59+rand_y[i+1000]
 for i in range(15):
     u2[i+1500],v2[i+1500] = other[i][0],other[i][1]
-    
+
+# Separate dataset into two subgroups.
 X1 = tf.constant(u2[:1500])
 y1 = tf.constant(v2[:1500])
 X2 = tf.constant(u2[1500:])
@@ -46,6 +47,8 @@ b = tf.Variable(tf.constant(0.1, shape=[1],dtype='float64'))
 z1 = tf.reduce_mean(tf.square(tf.matmul(X1,w)+b - y1))
 z2 = tf.reduce_mean(tf.square(tf.matmul(X2,w)+b - y2))
 
+# Define the max_mean of each subgroup's loss
+# according to equation (1).
 z = tf.maximum(z1,z2)
 
 z1_grad = tf.gradients(ys=z1,xs=w)
@@ -62,6 +65,8 @@ sess.run(tf.global_variables_initializer())
 
 print('start...')
 for i in range(300):
+         
+    # Compute the gradient of 'w'.
     GG = np.zeros([2,1])
     hh = np.zeros(2)
     g1 = sess.run(z1_grad)
@@ -77,22 +82,27 @@ for i in range(300):
     A = matrix(np.ones([1,2]))
     b_matrix = matrix(np.ones([1]))
     
-    
+    # Solve quadratic programming of the equation (4)-(5).
     res = qp(P,q,G=G,h=h,A=A,b=b_matrix)
     
-    
+    # Get descent direction.
     d = -np.array(GG).T.dot(np.array(res['x']))[:,0].reshape(-1,1)
 
     now = sess.run(z)
     ww = sess.run(w)
     t = 10
+         
+    # This part is optional: 
+    # The implementation of line-search.
     for j in range(100):
         if sess.run(z,feed_dict={w:ww+t*d}) < now:
             break
         t = 0.8*t
     
     sess.run(w.assign(ww+t*d))
-    
+
+    # Compute the gradient of 'b'.
+    # This part is similar to get the descent direction of 'w'.
     GG = np.zeros([2,1])
     hh = np.zeros(2)
     g1 = sess.run(z1_grad_b)
