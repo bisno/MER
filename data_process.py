@@ -1,8 +1,4 @@
 # -*- coding: UTF-8 -*-
-# @Author: xuli shen
-# @Date:   2020-07-17 20:20:30
-# @Last Modified by:   bison
-# @Last Modified time: 2020-09-09 14:43:45
 
 
 import glob
