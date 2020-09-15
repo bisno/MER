@@ -1,10 +1,4 @@
 #-*- coding: UTF-8 -*- 
-# @Author: xuli shen
-# @Date:   2020-07-17 20:20:30
-# @Last Modified by:   bison
-# @Last Modified time: 2020-09-08 14:37:35
-
-
 
 
 import tensorflow as tf
