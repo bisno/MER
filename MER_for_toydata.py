@@ -75,10 +75,10 @@ for i in range(300):
     G = matrix(-np.eye(2))
     h = matrix(np.zeros(2))
     A = matrix(np.ones([1,2]))
-    b1 = matrix(np.ones([1]))
+    b_matrix = matrix(np.ones([1]))
     
     
-    res = qp(P,q,G=G,h=h,A=A,b=b1)
+    res = qp(P,q,G=G,h=h,A=A,b=b_matrix)
     
     
     d = -np.array(GG).T.dot(np.array(res['x']))[:,0].reshape(-1,1)
@@ -106,10 +106,10 @@ for i in range(300):
     G = matrix(-np.eye(2))
     h = matrix(np.zeros(2))
     A = matrix(np.ones([1,2]))
-    b1 = matrix(np.ones([1]))
+    b_matrix = matrix(np.ones([1]))
     
     
-    res = qp(P,q,G=G,h=h,A=A,b=b1)
+    res = qp(P,q,G=G,h=h,A=A,b=b_matrix)
     db = -np.array(GG).T.dot(np.array(res['x']))[:,0]
     bb = sess.run(b)
     sess.run(b.assign(bb+0.1*db))
