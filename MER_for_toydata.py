@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-# @Author: xuli shen
-# @Date:   2020-09-08 11:40:56
-# @Last Modified by:   xuli shen
-# @Last Modified time: 2020-09-08 11:52:09
-
-
 
 import tensorflow as tf
 import numpy as np
