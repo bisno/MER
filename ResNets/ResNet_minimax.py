@@ -1,3 +1,5 @@
+# From https://github.com/taki0112/ResNet-Tensorflow.
+
 import time
 from ResNets.ops import *
 
