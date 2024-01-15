@@ -1,9 +1,10 @@
 
 # MER
-Nonlinear Monte Carlo Method for Imbalanced Data Learning
+The implementation on Towards Scalable and Fast Distributionally Robust Optimization for Data-Driven Deep Learning.
 
-Nonlinear Monte Carlo Method is the application of nonlinear expectation (Peng, 2005). In machine learning, we substitute the mean value of loss function with the maximum value of subgroup mean loss, which follows the assumption of sublinear expectation. We call it Maximum Empirical Risk (MER).
+****
 
+We formalize the learning problem with the supremum of a family of  *subgroup-level* loss functions. Subgroup loss is the cost function of partitioned uncertainty set. Then we implement the maximum of subgroup loss as the objective function and update model parameters by reweighting the descent direction, calculated from a differentiable objective function:
 ****
 
 Dev requirement:
